@@ -13,7 +13,7 @@ ErrorDocument 404 /404.php
 </IfModule>
 
 <IfModule mod_dir.c>
-  DirectoryIndex auth/index.php index.html
+  DirectoryIndex /main/index.php index.html
 </IfModule>
 
 <IfModule mod_expires.c>

@@ -5,7 +5,7 @@ $APPLICATION->SetTitle("Личные данные");
 	"bitrix:main.profile",
 	"",
 	Array(
-		"CHECK_RIGHTS" => "Y",
+		"CHECK_RIGHTS" => "N",
 		"SEND_INFO" => "N",
 		"SET_TITLE" => "Y",
 		"USER_PROPERTY" => array(),

@@ -13,16 +13,8 @@ $APPLICATION->SetTitle("Авторизация");
 	Array(
 		"FORGOT_PASSWORD_URL" => "/auth/forget.php",
 		"PROFILE_URL" => "/auth/personal.php",
-		"REGISTER_URL" => "/auth/login.php",
-		"SHOW_ERRORS" => "N"
-	)
-);?><?$APPLICATION->IncludeComponent(
-	"bitrix:system.auth.confirmation",
-	"",
-	Array(
-		"CONFIRM_CODE" => "confirm_code",
-		"LOGIN" => "login",
-		"USER_ID" => "confirm_user_id"
+		"REGISTER_URL" => "/auth/register.php",
+		"SHOW_ERRORS" => "Y"
 	)
 );?><br>
 </p><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

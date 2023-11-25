@@ -9,7 +9,7 @@ $APPLICATION->SetTitle("Регистрация");
 		"REQUIRED_FIELDS" => array("EMAIL"),
 		"SET_TITLE" => "Y",
 		"SHOW_FIELDS" => array("EMAIL","TITLE","NAME"),
-		"SUCCESS_PAGE" => "main.php",
+		"SUCCESS_PAGE" => "/main/index.php",
 		"USER_PROPERTY" => array(),
 		"USER_PROPERTY_NAME" => "",
 		"USE_BACKURL" => "Y"
