@@ -23,10 +23,33 @@ if ($USER->IsAuthorized()) {
     $balance = $userData["BALANCE"];
 ?> <br>
  <br>
-<h1><b>Ваш баланс: <? echo $balance ?></b></h1>
-<?
-    
+<h1> <b>Ваш баланс: <? echo $balance ?></b>&nbsp;</h1>
+<h1><b>Ваш ID: <? echo $userID ?></b> </h1>
+ <?
+
 } else {
-    echo "Пользователь не авторизован";
+    echo "";
 }
-?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+?><br>
+<?php 
+global $USER;
+
+if ($USER->IsAuthorized()) {
+?>
+<form action="/main/handlers/balance_handler.php" method="post">
+    <label for="debit">Списать баллы:</label>
+    <input type="number" id="debit" name="debit_amount" min="1" max="<? $balance ?>">
+    <button type="submit" name="debit_submit">Списать</button>
+</form>
+
+<form action="/main/handlers/balance_handler.php" method="post">
+    <label for="credit">Начислить баллы:</label>
+    <input type="number" id="credit" name="credit_amount" min="1">
+    <button type="submit" name="credit_submit">Начислить</button>
+</form>
+<?php
+} else {
+    echo "";
+}
+?>
+<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
