@@ -1,5 +1,6 @@
 <?php
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . '/local/php_interface/include/BalanceEntityTable.php');
 
 global $USER;
 
@@ -17,7 +18,8 @@ if ($USER->IsAuthorized()) {
                 
                 $user = new CUser;
                 $user->Update($userID, array("BALANCE" => $newBalance));
-                
+                $debitAmount = '-' . abs($debitAmount);
+                BalanceEntityTable::addBalance($userID, $debitAmount);
                 LocalRedirect("/");
             } else {
                 LocalRedirect("/");
@@ -34,12 +36,13 @@ if ($USER->IsAuthorized()) {
             
             $user = new CUser;
             $user->Update($userID, array("BALANCE" => $newBalance));
-            
+            $debitAmount = '+' . abs($creditAmount);
+            BalanceEntityTable::addBalance($userID, $debitAmount);
             LocalRedirect("/");
         }
     }
 } else {
-    echo "Пользователь не авторизован";
+    echo "";
 }
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php");
 

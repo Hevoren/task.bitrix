@@ -26,16 +26,16 @@ if ($USER->IsAuthorized()) {
 <h1> <b>Ваш баланс: <? echo $balance ?></b>&nbsp;</h1>
 <h1><b>Ваш ID: <? echo $userID ?></b> </h1>
  <?
-
+    
 } else {
     echo "";
 }
 ?><br>
-<?php 
+<?php
 global $USER;
 
 if ($USER->IsAuthorized()) {
-?>
+    ?>
 <form action="/main/handlers/balance_handler.php" method="post">
     <label for="debit">Списать баллы:</label>
     <input type="number" id="debit" name="debit_amount" min="1" max="<? $balance ?>">
@@ -48,8 +48,11 @@ if ($USER->IsAuthorized()) {
     <button type="submit" name="credit_submit">Начислить</button>
 </form>
 <?php
-} else {
-    echo "";
 }
+$pageNumber = isset($_GET['PAGE_NUMBER']) ? intval($_GET['PAGE_NUMBER']) : 1;
+
+$navigation = BalanceEntityTable::getRecordsWithPagination($pageNumber);
 ?>
+
+
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
