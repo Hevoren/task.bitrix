@@ -1,0 +1,11 @@
+{
+    "name": "hevoren/task.bitrix",
+    "type": "project",
+    "license": "mit",
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^8.0",
+        "webpractik/bitrixoa": "^1.2"
+        
+    }
+}

@@ -1,6 +1,4 @@
 <?php
-
-require_once($_SERVER['DOCUMENT_ROOT'] . '/local/php_interface/include/BalanceEntityTable.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/local/api/api_handler.php');
 use Bitrix\Main\EventManager;
 
