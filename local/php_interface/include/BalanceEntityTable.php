@@ -1,6 +1,8 @@
 <?php
 
 use Bitrix\Main\Entity;
+use Bitrix\Main\UI\PageNavigation;
+
 
 class BalanceEntityTable extends Entity\DataManager
 {
