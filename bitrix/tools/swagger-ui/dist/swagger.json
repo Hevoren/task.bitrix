@@ -1,14 +1,25 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "Название вашего API",
-    "description": "Описание вашего API",
+    "title": "Баланс и история баланса API",
     "version": "1.0.0"
   },
   "paths": {
-    "/countries": {
+    "/balance/{userID}": {
       "get": {
-        "summary": "Получение списка стран",
+        "summary": "Получить текущий баланс пользователя",
+        "parameters": [
+          {
+            "name": "userID",
+            "in": "path",
+            "description": "ID пользователя",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Успешный ответ",
@@ -17,13 +28,82 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "countries": {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
+                    "balance": {
+                      "type": "number",
+                      "description": "Текущий баланс пользователя"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Пользователь не найден",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/balance-history/{userID}": {
+      "get": {
+        "summary": "Получить историю баланса пользователя",
+        "parameters": [
+          {
+            "name": "userID",
+            "in": "path",
+            "description": "ID пользователя",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешный ответ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "ID": {
+                        "type": "integer",
+                        "description": "ID записи"
+                      },
+                      "USER_ID": {
+                        "type": "integer",
+                        "description": "ID пользователя"
+                      },
+                      "BALANCE": {
+                        "type": "string",
+                        "description": "Операция"
+                      },
+                      "TIMESTAMP": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Дата и время операции"
                       }
                     }
                   }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Пользователь не найден",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
                 }
               }
             }
