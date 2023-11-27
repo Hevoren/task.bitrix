@@ -68,7 +68,8 @@ return array (
       array (
         'config' =>
         array (
-          'routes.php'
+          'web.php',
+          'api.php'
         ),
       ),
     'readonly' => true,
